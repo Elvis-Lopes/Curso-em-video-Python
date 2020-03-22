@@ -1,8 +1,17 @@
 from random import randint
+from time import sleep
+
 while True:
     usuario = int(input('1- Pedra\n'
                         '2- Papel\n'
                         '3- Tesoura\n'))
+    sleep(1)
+    print('JO')
+    sleep(1)
+    print('KEN')
+    sleep(1)
+    print('PO!!!')
+
     computador = randint(1, 3)
     if usuario == 1 and computador == 3:
         print('Pedra vence de tesoura')
