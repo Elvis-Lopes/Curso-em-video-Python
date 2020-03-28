@@ -1,5 +1,5 @@
 n = soma = cont = 0
-while n != 999:
+while True:
     n = int(input('Digite um valor: '))
     if n != 999:
         soma = soma + n
