@@ -1,21 +1,19 @@
-from random import randint
-from time import sleep
-
-jogador = maquina = cont = 0
-
+idade = maiorIdade = qtdHomens = qtdMulheres =0
+sexo = str()
+opcao = str
 while True:
-    print('Jogador é par e o computador é impar')
-    jogador = int(input('Digite um numero de 0 a 10: '))
-    maquina = randint(0, 10)
-    sleep(1)
-    print('Impar ou par!!!')
-    sleep(1)
-    if (jogador+maquina) % 2 == 0:
-        print(f'O computador jogou {maquina}')
-        print('Jogador Venceu!')
-        cont += 1
-    else:
-        print(f'O computador jogou {maquina}')
-        print('Computador venceu!')
+    idade = int(input('Digite a idade: '))
+    sexo = str(input('Qual o sexo da pessoa? F/M')).strip().upper()[0]
+    if sexo in 'M':
+        qtdHomens += 1
+    if sexo in 'F':
+        if idade < 20:
+            qtdMulheres += 1
+    if idade >= 18:
+        maiorIdade += 1
+    opcao = str(input('Deseja continua? [S/N] ')).strip().upper()[0]
+    if opcao in 'N':
         break
-print(f'O jogador teve {cont}  vitorias consecutivas')
+print(f'A {maiorIdade} maiores de idade\n'
+      f'Foram cadastrados {qtdHomens} homens\n'
+      f'Ha {qtdMulheres} mulheres com menos de 20 anos')
