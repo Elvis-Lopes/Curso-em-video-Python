@@ -19,5 +19,6 @@ for p in boletim:
     print(f'Aluno: {p[0]}\n'
           f'Nota 1: {p[1]}\n'
           f'Nota 2: {p[2]}\n'
-          f'Media: {(p[1]+p[2]/2)}\n\n')
+          f'Media: {(p[1]+p[2]/2)}\n')
+    print('-='*30)
 
