@@ -1,30 +1,39 @@
-pessoas = dict()
-listaDePessoas = list()
-listaDeMulheres = list()
-opcao = str()
-mediaIdade = float()
-
-pessoas['nome'] = str(input('Digite o nome: ')).strip().title()
-pessoas['sexo'] = str(input('Digite o sexo [M/F]: ')).strip().title().upper()[0]
-pessoas['idade'] = int(input('Digite a idade: '))
-listaDePessoas.append(pessoas.values())
-if 'F' in pessoas['sexo']:
-    listaDeMulheres.append(pessoas.values())
-
+pessoa = dict()
+galera = list()
+soma = media = 0
 while True:
-    opcao = str(input('Deseja continuar ? [S/N]'))[0].title().strip().upper()
-    if 'N' in opcao:
+    pessoa.clear()
+    pessoa['nome'] = str(input('Nome: ')).strip().title()
+    while True:
+        pessoa['sexo'] = str(input('Sexo [M/F]: ')).strip().upper()[0]
+        if pessoa['sexo'] in 'MF':
+            break
+        print('ERRO! por favor digite apenas M ou F')
+    pessoa['idade'] = int(input('Idade: '))
+    soma += pessoa['idade']
+    galera.append(pessoa.copy())
+    opcao = str(input('Deseja continuar [S/N]: ')).strip().upper()[0]
+    if opcao in 'N':
         break
-    else:
-        pessoas['nome'] = str(input('Digite o nome: ')).strip().title()
-        pessoas['sexo'] = str(input('Digite o sexo [M/F]: ')).strip().title().upper()[0]
-        pessoas['idade'] = int(input('Digite a idade: '))
-        listaDePessoas.append(pessoas.values())
-        if 'F' in pessoas['sexo']:
-            listaDeMulheres.append(pessoas.values())
-
-print(listaDeMulheres)
-print(f'O grupo tem {len(listaDePessoas)} pessoas')
-print('As mulheres cadastradas foram: ', end='')
-for c in range(0, len(listaDeMulheres)):
-    print(f'{listaDeMulheres[c]["nome"]} ', end='')
+    if opcao not in 'SN':
+        print('ERRO! digite S ou N')
+        opcao = str(input('Deseja continuar [S/N]?')).strip().upper()[0]
+        if 'N' in opcao:
+            break
+print('-='*30)
+print(f'ao todo temos {len(galera)} pessoas cadastradas')
+media = soma / len(galera)
+print(f'A media de idade é {media:.2f}')
+print('As mulheres cadastradas foram', end='')
+for p in galera:
+    if p['sexo'] in 'F':
+        print(f'{p["nome"]}', end=' ')
+print()
+print(f'pessoas com idade acima da media: ', end='')
+for p in galera:
+    if p['idade'] > media:
+        print('     ')
+        for k, v in p.items():
+            print(f'{k} = {v}', end='')
+        print()
+print('<= Encerrado =>')
