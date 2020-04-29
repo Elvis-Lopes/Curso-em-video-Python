@@ -1,31 +1,38 @@
 def contador(inicio, fim, passo):
     from time import sleep
 
-    for i in range(1, 11):
-        print(f'{i} ', end='')
-        sleep(1)
-    print('Fim!')
-    print('-='*30)
+    print('Iniciando contagem de 1 a 10')
+    for i in range(0, 11):
+        print(f'{i}, ', end='', flush=False)
+        sleep(0.5)
+    print()
 
-    for i in range(10, 0, -2):
-        print(f'{i} ', end='')
-        sleep(1)
-    print('Fim')
-    print('-='*30)
+    print('Iniciando contagem regressiva de 2 em 2')
+    for i in range(10, -1, -2):
+        print(f'{i}, ', end='', flush='')
+        sleep(0.5)
+    print()
 
-    if(inicio < fim):
-        for i in range(inicio, fim, passo):
-            print(f'{i} ', end='')
-            sleep(1)
-    elif(fim > inicio):
-        passo *= -1
-        for i in range(fim, inicio, passo):
-            print(f'{i} ', end='')
-            sleep(1)
+    print('Iniciando contagem personalizada')
+    if inicio < fim and passo != 0:
+        while inicio <= fim:
+            print(f'{inicio}, ', end='', flush=False)
+            sleep(0.5)
+            inicio += passo
+    elif inicio > fim and passo != 0:
+        while inicio >= fim:
+            print(f'{inicio}, ', end='', flush=False)
+            sleep(0.5)
+            inicio -= passo
+    elif inicio < fim and passo == 0:
+        while inicio <= fim:
+            print(f'{inicio}, ', end='', flush=False)
+            sleep(0.5)
+            inicio += 1
     else:
-        print('Paramêtros inválidos!')
+        while inicio >= fim:
+            print(f'{inicio}, ', end='', flush=False)
+            sleep(0.5)
+            inicio -= 1
 
-    print('Fim')
-
-
-contador(90,60 , 10)
+contador(95, 90, 0)
