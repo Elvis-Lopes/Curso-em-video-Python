@@ -1,4 +1,7 @@
+from exercicios.ex111.utilidadesCeV.dados import leiaDinheiro
+
 def aumento (valor=0.0, aumento=0.0, format=True):
+    leiaDinheiro(valor)
     total = 0
     if format:
         porcentagem = (valor*aumento)/ 100
